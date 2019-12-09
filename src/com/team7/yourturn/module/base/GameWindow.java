@@ -1,0 +1,41 @@
+package com.team7.yourturn.module.base;
+
+import com.team7.yourturn.module.home.HomeController;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyListener;
+
+public class GameWindow extends JFrame {
+
+    public static GameWindow gameWindow;
+
+    private BaseController controller;
+
+
+    static {
+        gameWindow = new GameWindow();
+        gameWindow.setSize(1000,800);
+        gameWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        gameWindow.getContentPane().setBackground(Color.BLACK);
+        gameWindow.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        HomeController startController = new HomeController();
+        gameWindow.setController(startController);
+    }
+
+    public void addComponent(JComponent ... jComponents) {
+        for (JComponent jComponent : jComponents) {
+            gameWindow.getContentPane().add(jComponent);
+        }
+    }
+
+    public void setController(BaseController controller) {
+        this.controller = controller;
+        controller.start();
+    }
+
+
+}
