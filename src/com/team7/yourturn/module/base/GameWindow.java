@@ -6,7 +6,6 @@ import com.team7.yourturn.test.ItemComponent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
-
 public class GameWindow extends JFrame {
 
     public static GameWindow gameWindow;

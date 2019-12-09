@@ -17,7 +17,20 @@ public abstract class BaseController extends EventHandler{
         eventQueue.offer(eventCode);
     }
 
-    public abstract void start();
+    public void start() {
+        initView();
+        initEvent();
+        while (true) {
+            int eventCode;
+            if (!eventQueue.isEmpty()) {
+                eventCode = eventQueue.poll();
+                if (handleEvent(eventCode) == PAGE_END) {
+                    break;
+                }
+            }
+        }
+        gotoNextPage();
+    }
 
     protected abstract void initEvent();
     protected abstract void initView();

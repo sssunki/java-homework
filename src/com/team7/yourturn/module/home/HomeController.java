@@ -2,6 +2,7 @@ package com.team7.yourturn.module.home;
 
 import com.team7.yourturn.module.base.BaseController;
 import com.team7.yourturn.module.base.ItemComponent;
+import com.team7.yourturn.module.checkpoint.CheckpointController;
 import com.team7.yourturn.utils.Bundle;
 
 import java.awt.event.KeyEvent;
@@ -12,28 +13,8 @@ public class HomeController extends BaseController {
 
     public HomeController() {
         modePointer = new ModePointer();
-
     }
 
-    @Override
-    public void start() {
-        initView();
-        initEvent();
-        while (true) {
-            int eventCode;
-            if (!eventQueue.isEmpty()) {
-
-                eventCode = eventQueue.poll();
-                System.out.println(eventCode); // debug
-                if (handleEvent(eventCode) == PAGE_END) {
-                    break;
-                }
-
-            }
-        }
-        gotoNextPage();
-
-    }
 
     @Override
     protected void initEvent() {
@@ -53,6 +34,6 @@ public class HomeController extends BaseController {
     @Override
     protected void gotoNextPage() {
         Bundle bundle = new Bundle();
-
+        gameWindow.setController(new CheckpointController());
     }
 }
