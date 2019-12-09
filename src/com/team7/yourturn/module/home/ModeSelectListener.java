@@ -24,6 +24,7 @@ public class ModeSelectListener implements KeyListener {
         switch (keyEvent.getKeyCode()) {
             case KeyEvent.VK_DOWN:
                 parentController.addEvent(KeyEvent.VK_DOWN);
+                System.out.println("get Message");
                 break;
             case KeyEvent.VK_UP:
                 parentController.addEvent(KeyEvent.VK_UP);

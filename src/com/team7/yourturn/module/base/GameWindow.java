@@ -1,6 +1,7 @@
 package com.team7.yourturn.module.base;
 
 import com.team7.yourturn.module.home.HomeController;
+import com.team7.yourturn.test.ItemComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,13 +13,16 @@ public class GameWindow extends JFrame {
 
     private BaseController controller;
 
-
     static {
         gameWindow = new GameWindow();
         gameWindow.setSize(1000,800);
         gameWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameWindow.getContentPane().setBackground(Color.BLACK);
         gameWindow.setVisible(true);
+    }
+
+    public static GameWindow getInstance() {
+        return gameWindow;
     }
 
     public static void main(String[] args) {

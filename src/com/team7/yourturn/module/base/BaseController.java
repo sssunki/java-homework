@@ -3,12 +3,10 @@ package com.team7.yourturn.module.base;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public abstract class BaseController {
+public abstract class BaseController extends EventHandler{
 
     protected Queue<Integer> eventQueue;
     protected GameWindow gameWindow = GameWindow.gameWindow;
-    protected static final int PAGE_END = 1001;
-    protected static final int NO_MEANING_EVENT = 1000;
 
 
     {
@@ -21,6 +19,7 @@ public abstract class BaseController {
 
     public abstract void start();
 
+    protected abstract void initEvent();
     protected abstract void initView();
     protected abstract int handleEvent(int eventCode);
     protected abstract void gotoNextPage();

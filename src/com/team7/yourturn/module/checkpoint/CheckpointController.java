@@ -25,6 +25,11 @@ public class CheckpointController extends BaseController {
     }
 
     @Override
+    protected void initEvent() {
+
+    }
+
+    @Override
     protected int handleEvent(int eventCode) {
         return 0;
     }

@@ -1,4 +1,4 @@
-package com.team7.yourturn.test;
+package com.team7.yourturn.module.base;
 
 import javax.swing.*;
 import java.awt.*;
