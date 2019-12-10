@@ -34,6 +34,7 @@ public class HomeController extends BaseController {
     @Override
     protected void gotoNextPage() {
         Bundle bundle = new Bundle();
-        gameWindow.setController(new CheckpointController());
+        bundle.addInt("player",modePointer.getPointerState());
+        gameWindow.setController(new CheckpointController(bundle));
     }
 }

@@ -11,8 +11,12 @@ public class Bundle {
         intPackage = new HashMap<>();
     }
 
-    public void addInteger(String key, Integer value) {
+    public void addInt(String key, Integer value) {
         intPackage.put(key,value);
+    }
+
+    public int getInt(String key) {
+        return intPackage.get(key);
     }
 
     

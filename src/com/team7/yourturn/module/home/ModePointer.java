@@ -1,23 +1,25 @@
 package com.team7.yourturn.module.home;
 
-import com.team7.yourturn.module.base.BaseController;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.ItemComponent;
 
-import javax.print.DocFlavor;
 import java.awt.event.KeyEvent;
 
 public class ModePointer extends BaseViewModel {
 
-    private int POINT_TO_ONE_PLAYER = 1100;
-    private int POINT_TO_TWO_PLAYER = 1101;
+    private final int POINT_TO_ONE_PLAYER = 1100;
+    private final int POINT_TO_TWO_PLAYER = 1101;
+    private final int DEFAULT_X = 400;
+    private final int DEFAULT_Y = 400;
+    private final int DEFAULT_WIDTH = 60;
+    private final int DEFAULT_HEIGHT = 60;
 
     private int pointerState = POINT_TO_ONE_PLAYER;
 
     public ModePointer() {
-        x = 400;
-        y = 400;
-        this.itemComponent = new ItemComponent("test.jpg",60,60);
+        x = DEFAULT_X;
+        y = DEFAULT_Y;
+        this.itemComponent = new ItemComponent("test.jpg",DEFAULT_WIDTH,DEFAULT_HEIGHT);
         itemComponent.setLocation(x, y);
     }
 
@@ -36,15 +38,17 @@ public class ModePointer extends BaseViewModel {
     }
 
     private int changePointer(int eventCode){
+        int moveDistance = 120;
+
         switch (eventCode) {
 
             case KeyEvent.VK_DOWN:
                 if (pointerState == POINT_TO_ONE_PLAYER){
                     pointerState = POINT_TO_TWO_PLAYER;
-                    y += 120;
+                    y += moveDistance;
                 } else {
                     pointerState = POINT_TO_ONE_PLAYER;
-                    y -= 120;
+                    y -= moveDistance;
                 }
                 locationUpdate();
                 return EVENT_HANDLE_SUCCEED;
@@ -52,10 +56,10 @@ public class ModePointer extends BaseViewModel {
             case KeyEvent.VK_UP:
                 if (pointerState == POINT_TO_TWO_PLAYER){
                     pointerState = POINT_TO_ONE_PLAYER;
-                    y -= 120;
+                    y -= moveDistance;
                 } else {
                     pointerState = POINT_TO_TWO_PLAYER;
-                    y += 120;
+                    y += moveDistance;
                 }
                 locationUpdate();
                 return EVENT_HANDLE_SUCCEED;
@@ -63,5 +67,9 @@ public class ModePointer extends BaseViewModel {
             default:
                 return CASE_WONT_HAPPEN;
         }
+    }
+
+    public int getPointerState() {
+        return pointerState;
     }
 }

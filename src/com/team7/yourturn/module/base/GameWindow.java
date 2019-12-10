@@ -36,6 +36,10 @@ public class GameWindow extends JFrame {
     }
 
     public void setController(BaseController controller) {
+        // TODO：清除旧页面贴图
+        this.getContentPane().removeAll();
+        this.getContentPane().setBackground(Color.BLACK);
+        this.setVisible(true);
         this.controller = controller;
         controller.start();
     }
