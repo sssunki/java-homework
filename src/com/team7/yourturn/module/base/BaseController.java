@@ -5,6 +5,8 @@ import com.team7.yourturn.utils.Bundle;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import static com.team7.yourturn.utils.EventCode.PAGE_END;
+
 public abstract class BaseController extends EventHandler{
 
     protected Bundle lastPageBundle;

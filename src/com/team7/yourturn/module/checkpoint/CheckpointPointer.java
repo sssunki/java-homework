@@ -5,6 +5,9 @@ import com.team7.yourturn.module.base.ItemComponent;
 
 import java.awt.event.KeyEvent;
 
+import static com.team7.yourturn.utils.EventCode.NO_MEANING_EVENT;
+import static com.team7.yourturn.utils.EventCode.PAGE_END;
+
 public class CheckpointPointer extends BaseViewModel {
     private int POINT_TO_CHECKPOINT_ONE   = 2101;
     private int POINT_TO_CHECKPOINT_TWO   = 2102;

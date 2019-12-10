@@ -10,6 +10,8 @@ public class ItemComponent extends JComponent {
 
     private int width;
     private int height;
+    private int x;
+    private int y;
 
     private Image image;
 

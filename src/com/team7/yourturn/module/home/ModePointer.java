@@ -5,22 +5,21 @@ import com.team7.yourturn.module.base.ItemComponent;
 
 import java.awt.event.KeyEvent;
 
+import static com.team7.yourturn.utils.EventCode.*;
+
 public class ModePointer extends BaseViewModel {
 
     private final int POINT_TO_ONE_PLAYER = 1100;
     private final int POINT_TO_TWO_PLAYER = 1101;
     private final int DEFAULT_X = 400;
     private final int DEFAULT_Y = 400;
-    private final int DEFAULT_WIDTH = 60;
-    private final int DEFAULT_HEIGHT = 60;
 
     private int pointerState = POINT_TO_ONE_PLAYER;
 
     public ModePointer() {
-        x = DEFAULT_X;
-        y = DEFAULT_Y;
         this.itemComponent = new ItemComponent("test.jpg",DEFAULT_WIDTH,DEFAULT_HEIGHT);
-        itemComponent.setLocation(x, y);
+        this.x = DEFAULT_X;
+        this.y = DEFAULT_Y;
     }
 
     public int HandleEvent(int eventCode) {

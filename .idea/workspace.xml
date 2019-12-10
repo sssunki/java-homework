@@ -2,25 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="774788d2-8205-46af-969b-72869fa2d13f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/CheckpointPointer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Damageable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Movable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/map/CheckpointOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/PlayerActionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/EnemyGeneratePoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/utils/EventCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/EventHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/EventHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/checkpoint/CheckpointController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/checkpoint/CheckpointController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/ItemComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/ItemComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/checkpoint/CheckpointPointer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/checkpoint/CheckpointPointer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/home/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/home/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/home/ModePointer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/home/ModePointer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/utils/Bundle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/utils/Bundle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/CheckpointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/CheckpointController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/ShowCheckpointView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/ShowCheckpointView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/ItemComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/ItemComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/CheckpointPointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/checkpoint/CheckpointPointer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/HomepageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/HomepageView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/ModePointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/home/ModePointer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/utils/Bundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/utils/Bundle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -135,40 +142,69 @@
       <screen x="0" y="36" width="2560" height="1404" />
     </state>
     <state x="935" y="537" key="#com.intellij.fileTypes.FileTypeChooser/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941487850" />
-    <state x="3644" y="423" key="#com.intellij.ide.util.MemberChooser" timestamp="1575937719292">
+    <state x="3644" y="423" key="#com.intellij.ide.util.MemberChooser" timestamp="1575981360698">
       <screen x="2560" y="0" width="2560" height="1440" />
     </state>
     <state x="1084" y="448" key="#com.intellij.ide.util.MemberChooser/0.36.2560.1404@0.36.2560.1404" timestamp="1575908185584" />
-    <state x="3644" y="423" key="#com.intellij.ide.util.MemberChooser/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575937719292" />
-    <state width="2506" height="283" key="GridCell.Tab.0.bottom" timestamp="1575941165144">
-      <screen x="0" y="36" width="2560" height="1404" />
+    <state x="3644" y="423" key="#com.intellij.ide.util.MemberChooser/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575981360698" />
+    <state x="3556" y="598" width="570" height="263" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1575979104087">
+      <screen x="2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2506" height="283" key="GridCell.Tab.0.bottom/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941165144" />
+    <state x="3556" y="598" width="570" height="263" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575979104087" />
+    <state width="2506" height="291" key="GridCell.Tab.0.bottom" timestamp="1575984082754">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2506" height="283" key="GridCell.Tab.0.bottom/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941916955" />
     <state width="2506" height="275" key="GridCell.Tab.0.bottom/0.36.2560.1404@0.36.2560.1404" timestamp="1575908957579" />
-    <state width="2506" height="283" key="GridCell.Tab.0.bottom/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575938705470" />
-    <state width="2506" height="283" key="GridCell.Tab.0.center" timestamp="1575941165144">
-      <screen x="0" y="36" width="2560" height="1404" />
+    <state width="2506" height="291" key="GridCell.Tab.0.bottom/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575984082754" />
+    <state width="2506" height="291" key="GridCell.Tab.0.center" timestamp="1575984082754">
+      <screen x="2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2506" height="283" key="GridCell.Tab.0.center/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941165144" />
+    <state width="2506" height="283" key="GridCell.Tab.0.center/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941916954" />
     <state width="2506" height="275" key="GridCell.Tab.0.center/0.36.2560.1404@0.36.2560.1404" timestamp="1575908957579" />
-    <state width="2506" height="283" key="GridCell.Tab.0.center/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575938705470" />
-    <state width="2506" height="283" key="GridCell.Tab.0.left" timestamp="1575941165144">
-      <screen x="0" y="36" width="2560" height="1404" />
+    <state width="2506" height="291" key="GridCell.Tab.0.center/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575984082754" />
+    <state width="2506" height="291" key="GridCell.Tab.0.left" timestamp="1575984082754">
+      <screen x="2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2506" height="283" key="GridCell.Tab.0.left/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941165144" />
+    <state width="2506" height="283" key="GridCell.Tab.0.left/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941916954" />
     <state width="2506" height="275" key="GridCell.Tab.0.left/0.36.2560.1404@0.36.2560.1404" timestamp="1575908957579" />
-    <state width="2506" height="283" key="GridCell.Tab.0.left/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575938705470" />
-    <state width="2506" height="283" key="GridCell.Tab.0.right" timestamp="1575941165144">
-      <screen x="0" y="36" width="2560" height="1404" />
+    <state width="2506" height="291" key="GridCell.Tab.0.left/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575984082754" />
+    <state width="2506" height="291" key="GridCell.Tab.0.right" timestamp="1575984082754">
+      <screen x="2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2506" height="283" key="GridCell.Tab.0.right/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941165144" />
+    <state width="2506" height="283" key="GridCell.Tab.0.right/0.36.2560.1404/2560.0.2560.1440@0.36.2560.1404" timestamp="1575941916955" />
     <state width="2506" height="275" key="GridCell.Tab.0.right/0.36.2560.1404@0.36.2560.1404" timestamp="1575908957579" />
-    <state width="2506" height="283" key="GridCell.Tab.0.right/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575938705470" />
-    <state x="787" y="503" key="com.intellij.ide.util.TipDialog" timestamp="1575935618642">
-      <screen x="0" y="40" width="2560" height="1400" />
+    <state width="2506" height="291" key="GridCell.Tab.0.right/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575984082754" />
+    <state width="2506" height="495" key="GridCell.Tab.1.bottom" timestamp="1575978879352">
+      <screen x="2560" y="0" width="2560" height="1440" />
     </state>
+    <state width="2506" height="495" key="GridCell.Tab.1.bottom/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575978879352" />
+    <state width="2506" height="495" key="GridCell.Tab.1.center" timestamp="1575978879352">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2506" height="495" key="GridCell.Tab.1.center/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575978879352" />
+    <state width="2506" height="495" key="GridCell.Tab.1.left" timestamp="1575978879352">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2506" height="495" key="GridCell.Tab.1.left/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575978879352" />
+    <state width="2506" height="495" key="GridCell.Tab.1.right" timestamp="1575978879352">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2506" height="495" key="GridCell.Tab.1.right/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575978879352" />
+    <state x="3319" y="300" key="SettingsEditor" timestamp="1575978393773">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state x="3319" y="300" key="SettingsEditor/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575978393773" />
+    <state x="3347" y="476" key="com.intellij.ide.util.TipDialog" timestamp="1575953778554">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state x="3347" y="476" key="com.intellij.ide.util.TipDialog/0.36.2560.1404/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575953778554" />
     <state x="787" y="503" key="com.intellij.ide.util.TipDialog/0.36.2560.1404@0.36.2560.1404" timestamp="1575906262462" />
     <state x="590" y="386" key="com.intellij.ide.util.TipDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1575906147651" />
     <state x="787" y="503" key="com.intellij.ide.util.TipDialog/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575935618642" />
+    <state x="3495" y="337" key="run.anything.popup" timestamp="1575979789988">
+      <screen x="2560" y="0" width="2560" height="1440" />
+    </state>
+    <state x="3495" y="337" key="run.anything.popup/0.40.2560.1400/2560.0.2560.1440@2560.0.2560.1440" timestamp="1575979789988" />
   </component>
 </project>
