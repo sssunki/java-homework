@@ -39,13 +39,13 @@ public class Bullet extends BaseViewModel implements Movable {
     @Override
     public boolean collisionDetection() {
         boolean result;
-        for (Item item : controller.getCheckpointMap().getBarriers()) {
+           for (Item item : controller.getCheckpointMap().getBarriers()) {
             int targetX = item.getX();
             int targetY = item.getY();
 
-            if (x > targetX && x < (targetX + item.getWidth())) {
-                controller.addEvent();
-            }
+//            if (x > targetX && x < (targetX + item.getWidth())) {
+//                controller.addEvent();
+//            }
         }
 
 
