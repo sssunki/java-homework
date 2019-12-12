@@ -26,14 +26,17 @@ public class UICreator implements KeyListener {
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()) {
             case KeyEvent.VK_LEFT:
+                imageTest.setImage(imageTest.rotateImageLeft90(imageTest));
                 imageTest.setLocation(imageTest.getX() - 50, imageTest.getY());
                 System.out.println(imageTest.getX());
                 break;
             case KeyEvent.VK_RIGHT:
+                imageTest.setImage(imageTest.rotateImageRight90(imageTest));
                 imageTest.setLocation(imageTest.getX() + 50, imageTest.getY());
                 System.out.println(imageTest.getX());
                 break;
             case KeyEvent.VK_DOWN:
+                imageTest.setImage(imageTest.rotateImage180(imageTest));
                 imageTest.setLocation(imageTest.getX(), imageTest.getY() + 50);
                 System.out.println(imageTest.getY());
                 break;

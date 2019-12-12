@@ -40,6 +40,7 @@ public class Player extends BaseViewModel implements Movable {
         switch (eventCode) {
             case KeyEvent.VK_UP:
                 y -= 30;
+
                 locationUpdate();
                 direction = DIRECT_UP;
                 return EVENT_HANDLE_SUCCEED;
@@ -55,6 +56,7 @@ public class Player extends BaseViewModel implements Movable {
                 return EVENT_HANDLE_SUCCEED;
             case KeyEvent.VK_LEFT:
                 x -= 30;
+
                 locationUpdate();
                 direction = DIRECT_LEFT;
                 return EVENT_HANDLE_SUCCEED;
