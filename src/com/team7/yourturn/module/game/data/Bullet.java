@@ -5,6 +5,7 @@ import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
+import com.team7.yourturn.module.game.collision.CollisionEvent;
 
 public class Bullet extends BaseViewModel implements Movable {
 
@@ -38,18 +39,24 @@ public class Bullet extends BaseViewModel implements Movable {
 
     @Override
     public boolean collisionDetection() {
-        boolean result;
+        boolean result = false;
         for (Item item : controller.getCheckpointMap().getBarriers()) {
+            // the coordinate of next step
             int targetX = item.getX();
             int targetY = item.getY();
 
-            if (x > targetX && x < (targetX + item.getWidth())) {
-                controller.addEvent();
+            // detect collision
+            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+                CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
+                controller.getCollisionHandler().addCollisionEvent(collisionEvent);
+                System.out.println("collision happen");
+                result = true;
+                break;
             }
         }
 
-
-        return false;
+        return result;
     }
 
     private final int DIRECT_UP = 10001;

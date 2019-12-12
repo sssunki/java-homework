@@ -15,7 +15,21 @@ public class CheckpointSelectListener extends BaseListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
+        switch (keyEvent.getKeyCode()) {
+            case KeyEvent.VK_LEFT:
+                controller.addEvent(KeyEvent.VK_LEFT);
+                System.out.println("get check Message");
+                break;
+            case KeyEvent.VK_RIGHT:
+                controller.addEvent(KeyEvent.VK_RIGHT);
+                break;
+            case KeyEvent.VK_ENTER:
+                controller.addEvent(KeyEvent.VK_ENTER);
+                break;
+
+        }
 
     }
 
 }
+

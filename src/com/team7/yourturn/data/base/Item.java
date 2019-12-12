@@ -1,10 +1,15 @@
 package com.team7.yourturn.data.base;
 
 public abstract class Item {
+
+    protected final int DEFAULT_WIDTH = 60;
+    protected final int DEFAULT_HEIGHT = 60;
+
+
     protected int x;
     protected int y;
-    protected int width;
-    protected int height;
+    protected int width = DEFAULT_WIDTH;
+    protected int height = DEFAULT_HEIGHT;
 
     public int getX() {
         return x;

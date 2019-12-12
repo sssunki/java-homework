@@ -70,7 +70,7 @@ public class ItemComponent extends JComponent {
 
 
     //左转90度
-    public static Image rotateImageLeft90(com.team7.yourturn.test.ItemComponent itemComponent)
+    public static Image rotateImageLeft90(ItemComponent itemComponent)
     {
         Image image=itemComponent.getImage();
         BufferedImage bufferedimage = ImageToBufferedImage(image);
@@ -90,7 +90,7 @@ public class ItemComponent extends JComponent {
     }
 
     //右转90度
-    public static Image rotateImageRight90(com.team7.yourturn.test.ItemComponent itemComponent)
+    public static Image rotateImageRight90(ItemComponent itemComponent)
     {
         Image image=itemComponent.getImage();
         BufferedImage bufferedimage = ImageToBufferedImage(image);
@@ -108,7 +108,7 @@ public class ItemComponent extends JComponent {
     }
 
     //颠倒
-    public static Image rotateImage180(com.team7.yourturn.test.ItemComponent itemComponent)
+    public static Image rotateImage180(ItemComponent itemComponent)
     {
         Image image=itemComponent.getImage();
         BufferedImage bufferedimage = ImageToBufferedImage(image);

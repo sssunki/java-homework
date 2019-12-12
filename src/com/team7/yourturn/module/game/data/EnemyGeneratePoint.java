@@ -27,15 +27,15 @@ public class EnemyGeneratePoint extends BaseView {
                 while (true) {
                     int enemyLeft = GameController.getEnemyLeft();
                     if (enemyLeft != 0) {
+                        int enemyExist = 3 - enemyLeft;
+                        System.out.println(enemyExist);
                         controller.addEvent(GENERATE_AN_ENEMY);
                         GameController.setEnemyLeft(enemyLeft - 1);
-
                     }
                 }
             }
         }).start();
     }
-
 
 
 }

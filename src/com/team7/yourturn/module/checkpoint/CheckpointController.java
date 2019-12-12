@@ -33,14 +33,14 @@ public class CheckpointController extends BaseController {
 
     @Override
     protected int handleEvent(int eventCode) {
-        return 0;
+        return checkpointPointer.HandleEvent(eventCode);
     }
 
     @Override
     protected void gotoNextPage() {
         Bundle bundle = new Bundle();
-        bundle.addInt("player", numOfPlayer);
-        bundle.addInt("checkpoint",checkpointPointer.getPointerState());
+        bundle.addInt("player", numOfPlayer);//玩家数量
+        bundle.addInt("checkpoint",checkpointPointer.getPointerState());//关卡
         gameWindow.setController(new GameController(bundle));
     }
 }
