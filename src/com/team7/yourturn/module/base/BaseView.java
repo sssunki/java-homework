@@ -1,6 +1,8 @@
 package com.team7.yourturn.module.base;
 
-public class BaseView extends EventHandler{
+import com.team7.yourturn.data.base.Item;
+
+public class BaseView extends Item {
 
     protected final int DEFAULT_WIDTH = 60;
     protected final int DEFAULT_HEIGHT = 60;
@@ -16,6 +18,14 @@ public class BaseView extends EventHandler{
         gameWindow.addComponent(itemComponent);
         gameWindow.setVisible(true);
         initLocation();
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     private void initLocation() {

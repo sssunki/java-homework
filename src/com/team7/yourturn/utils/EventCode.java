@@ -12,5 +12,8 @@ public class EventCode {
     public static final int ITEM_MOVE_UP         = 1013;
     public static final int ITEM_MOVE_DOWN       = 1014;
     public static final int ITEM_ATTACK          = 1015;
+    public static final int PLAYER_ITEM_DEATH    = 1016;
+    public static final int ENEMY_ITEM_DEATH     = 1017;
     public static final int GAME_STOP            = 1020;
+    public static final int GENERATE_AN_ENEMY    = 1021;
 }
