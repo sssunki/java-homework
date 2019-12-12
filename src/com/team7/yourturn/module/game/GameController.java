@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static com.team7.yourturn.utils.EventCode.*;
 
@@ -62,10 +63,14 @@ public class GameController extends BaseController {
     }
 
     private void initMap() {
-
     }
 
     private void initEnemy() {
+        int i = (int)(1+Math.random()*(3-1+1));
+        Enemy enemy = new Enemy(enemyGeneratePoints.get(i).getX(),enemyGeneratePoints.get(i).getY(),enemyGeneratePoints.get(i));
+        enemies = new ArrayList<>();
+        enemies.add(enemy);
+        enemy.draw();
     }
 
     @Override
@@ -113,5 +118,5 @@ public class GameController extends BaseController {
 
     }
 
-    private class
+//    private class
 }
