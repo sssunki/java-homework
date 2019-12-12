@@ -37,5 +37,4 @@ public class EnemyGeneratePoint extends BaseView {
     }
 
 
-
 }

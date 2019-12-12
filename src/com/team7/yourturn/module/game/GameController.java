@@ -84,6 +84,7 @@ public class GameController extends BaseController {
                 return EVENT_HANDLE_SUCCEED;
             case GENERATE_AN_ENEMY:
 
+
         }
         return CASE_WONT_HAPPEN;
     }
@@ -113,5 +114,5 @@ public class GameController extends BaseController {
 
     }
 
-    private class
+    //private class
 }

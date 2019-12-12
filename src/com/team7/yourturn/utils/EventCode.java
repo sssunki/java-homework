@@ -16,4 +16,6 @@ public class EventCode {
     public static final int ENEMY_ITEM_DEATH     = 1017;
     public static final int GAME_STOP            = 1020;
     public static final int GENERATE_AN_ENEMY    = 1021;
+
+    public static final int DAMAGE                =1022;
 }
