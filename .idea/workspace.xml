@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="774788d2-8205-46af-969b-72869fa2d13f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/map/CheckpointMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/MapMessagePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/NormalWall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/test/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/utils/CoordinateCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/team7/yourturn/utils/ItemCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/data/map/CheckpointOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/data/map/CheckpointOne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/base/BaseView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/data/EnemyGeneratePoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/data/EnemyGeneratePoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/data/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/module/game/data/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/utils/EventCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yourturn/com/team7/yourturn/utils/EventCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Damageable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Damageable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/base/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/data/map/CheckpointOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/data/map/CheckpointOne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/base/BaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/EnemyGeneratePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/EnemyGeneratePoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/module/game/data/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/team7/yourturn/utils/EventCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/team7/yourturn/utils/EventCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
