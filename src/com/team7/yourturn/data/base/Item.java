@@ -1,6 +1,6 @@
 package com.team7.yourturn.data.base;
 
-public abstract class Item {
+public abstract class Item implements Collidable{
 
     protected final int DEFAULT_WIDTH = 60;
     protected final int DEFAULT_HEIGHT = 60;
@@ -41,5 +41,10 @@ public abstract class Item {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    @Override
+    public void onCollision() {
+
     }
 }

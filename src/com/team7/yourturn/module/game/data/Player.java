@@ -1,5 +1,7 @@
 package com.team7.yourturn.module.game.data;
 
+import com.team7.yourturn.data.base.Damageable;
+import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.GameWindow;
@@ -13,15 +15,17 @@ import java.awt.geom.AffineTransform;
 
 import static com.team7.yourturn.utils.EventCode.*;
 
-public class Player extends BaseViewModel implements Movable {
+public class Player extends BaseViewModel implements Movable , Damageable {
 
 
     private int direction;
+    private GameController controller;
 
-    public Player(String filename, int x, int y) {
+    public Player(String filename, int x, int y, GameController controller) {
         this.x = x;
         this.y = y;
         this.direction = DIRECT_UP;
+        this.controller = controller;
         itemComponent = new ItemComponent(filename, width, height);
     }
 
@@ -43,30 +47,53 @@ public class Player extends BaseViewModel implements Movable {
     }
 
     private int changeLocationAndDirection(int eventCode) {
+        int yLast = y;
+        int xLast = x;
+        System.out.println(x + " " + y);
         switch (eventCode) {
+
             case KeyEvent.VK_UP:
                 y -= 30;
-                directUpdateU( this.direction);
-                locationUpdate();
-                direction = DIRECT_UP;
+                if (collisionDetection()){
+                    y = yLast;
+                } else {
+                    directUpdateU(this.direction);
+                    locationUpdate();
+                    direction = DIRECT_UP;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case KeyEvent.VK_DOWN:
                 y += 30;
-                directUpdateD(this.direction);
-                locationUpdate();
-                direction = DIRECT_DOWN;
+                if (collisionDetection()) {
+                    y = yLast;
+                } else {
+                    directUpdateD(this.direction);
+                    locationUpdate();
+                    direction = DIRECT_DOWN;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case KeyEvent.VK_RIGHT:
                 x += 30;
-                directUpdateR(this.direction);
-                locationUpdate();
-                direction = DIRECT_RIGHT;
+                if (collisionDetection()) {
+                    x = xLast;
+                } else {
+                    directUpdateR(this.direction);
+                    locationUpdate();
+                    direction = DIRECT_RIGHT;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case KeyEvent.VK_LEFT:
                 x -= 30;
-                directUpdateL(this.direction);
-                locationUpdate();
-                direction = DIRECT_LEFT;
+                if (collisionDetection()) {
+                    x = xLast;
+                } else {
+                    directUpdateL(this.direction);
+                    locationUpdate();
+                    direction = DIRECT_LEFT;
+                }
                 return EVENT_HANDLE_SUCCEED;
         }
         return CASE_WONT_HAPPEN;
@@ -78,8 +105,36 @@ public class Player extends BaseViewModel implements Movable {
 
     @Override
     public boolean collisionDetection() {
+        boolean result = false;
 
-        return false;
+        for (Item item : controller.getCheckpointMap().getBarriers()) {
+
+            if (item instanceof Player) {
+                continue;
+            }
+
+            int targetX = item.getX();
+            int targetY = item.getY();
+
+            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+
+    @Override
+    public void onBeingAttacked() {
+
+    }
+
+    @Override
+    public void onCollision() {
+        onBeingAttacked();
     }
 
     private final int DIRECT_UP = 10001;
