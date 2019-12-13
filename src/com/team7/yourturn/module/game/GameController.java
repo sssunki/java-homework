@@ -81,6 +81,9 @@ public class GameController extends BaseController {
 
     private void initEnemy() {
         int i = (int)(1+Math.random()*(3-1+1));
+        while(enemyGeneratePoints.get(i - 1).hasthing()){
+            i = (int)(1+Math.random()*(3-1+1));
+        }
         Enemy enemy = new Enemy(enemyGeneratePoints.get(i - 1).getX(),
                 enemyGeneratePoints.get(i - 1).getY(),enemyGeneratePoints.get(i - 1));
         enemies.add(enemy);
@@ -125,6 +128,10 @@ public class GameController extends BaseController {
         }
 
         return false;
+    }
+
+    public  List<Item>  getItems(){
+        return items;
     }
 
     public synchronized void declineEnemyLeft() {

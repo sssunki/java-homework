@@ -1,8 +1,10 @@
 package com.team7.yourturn.module.game.data;
 
+import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.module.base.BaseController;
 import com.team7.yourturn.module.base.BaseView;
 import com.team7.yourturn.module.game.GameController;
+import com.team7.yourturn.module.game.collision.CollisionEvent;
 import com.team7.yourturn.utils.EventCode;
 
 import static com.team7.yourturn.utils.EventCode.GENERATE_AN_ENEMY;
@@ -11,9 +13,9 @@ public class EnemyGeneratePoint extends BaseView {
 
     public boolean readyToGenerateEnemy;
 
-    private BaseController controller;
+    private GameController controller;
 
-    public EnemyGeneratePoint(int x, int y, BaseController controller) {
+    public EnemyGeneratePoint(int x, int y, GameController controller) {
         this.x = x;
         this.y = y;
         this.controller = controller;
@@ -37,5 +39,18 @@ public class EnemyGeneratePoint extends BaseView {
         }).start();
     }
 
+    public boolean hasthing(){
+        boolean result = false;
+        for (Item item :controller.getItems()) {
+            int targetX = item.getX();
+            int targetY = item.getY();
+
+            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (targetY == 0) ) {
+                result = true;
+            }
+        }
+        return result;
+    }
 
 }

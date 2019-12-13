@@ -1,10 +1,12 @@
 package com.team7.yourturn.module.game.data;
 
 import com.team7.yourturn.data.base.Damageable;
+import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
+import com.team7.yourturn.module.game.collision.CollisionEvent;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -88,16 +90,16 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                     enemyEventQueue.offer(ITEM_MOVE_DOWN);
                     break;
                 case 2:
-                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
+                    enemyEventQueue.offer(ITEM_MOVE_UP);
                     break;
                 case 3:
                     enemyEventQueue.offer(ITEM_MOVE_RIGHT);
                     break;
                 case 4:
-                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
+                    enemyEventQueue.offer(ITEM_MOVE_LEFT);
                     break;
                 case 5:
-//                    enemyEventQueue.offer(ITEM_ATTACK);
+                    enemyEventQueue.offer(ITEM_ATTACK);
                     break;
                 default:
                     break;
@@ -105,8 +107,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             return 0;
         }
     }
-
-
 
     public int handleEvent(int eventCode) {
         switch (eventCode) {
@@ -124,6 +124,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 }
                 return changeLocationAndDirection(eventCode);
             case ITEM_ATTACK  :
+
                 Bullet bullet = new Bullet(direction,x,y, gameController);
                 bullet.draw();
                 bullet.move();
@@ -140,21 +141,33 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private int changeLocationAndDirection(int eventCode) {
         switch (eventCode) {
             case ITEM_MOVE_UP:
+                if(collisionDetection()){
+                    break;
+                }
                 y -= 30;
                 locationUpdate();
                 direction = DIRECT_UP;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_DOWN:
+                if(collisionDetection()){
+                    break;
+                }
                 y += 30;
                 locationUpdate();
                 direction = DIRECT_DOWN;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_RIGHT :
+                if(collisionDetection()){
+                    break;
+                }
                 x += 30;
                 locationUpdate();
                 direction = DIRECT_RIGHT;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_LEFT :
+                if(collisionDetection()){
+                    break;
+                }
                 x -= 30;
                 locationUpdate();
                 direction = DIRECT_LEFT;
@@ -181,7 +194,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             //更新血量
         }
     }
-
 
 }
 
