@@ -47,6 +47,8 @@ public class ItemComponent extends JComponent {
         g.drawImage(image, 0, 0, width, height, null);
     }
 
+
+
     public Dimension getPreferredSized() {
         return new Dimension(DEFAULT_WIDTH,DEFAULT_HEIGHT);
     }

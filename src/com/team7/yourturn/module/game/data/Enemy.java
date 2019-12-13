@@ -4,6 +4,7 @@ import com.team7.yourturn.data.base.Damageable;
 import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
+import com.team7.yourturn.module.base.GameWindow;
 import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
 import com.team7.yourturn.module.game.collision.CollisionEvent;
@@ -11,6 +12,7 @@ import com.team7.yourturn.module.game.collision.CollisionEvent;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import static com.team7.yourturn.module.game.GameController.enemyExist;
 import static com.team7.yourturn.utils.EventCode.*;
 
 public class Enemy extends BaseViewModel implements Movable, Damageable {
@@ -20,7 +22,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private GameController gameController;
 
     private int enemyId;
-    private int direction;
+    private int direction =10002;
     private int hp;
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint) {
@@ -29,13 +31,14 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         this.hp = 10;
         this.parentGeneratePoint = parentGeneratePoint;
         this.enemyEventQueue = new LinkedBlockingQueue<>();
-        this.itemComponent = new ItemComponent("test.jpg",width,height);
+        this.itemComponent = new ItemComponent("enemy1.jpg",width,height);
     }
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint,GameController gameController) {
         this.x = x;
         this.y = y;
         this.hp = 10;
+        this.itemComponent = new ItemComponent("enemy1.jpg",width,height);
         this.parentGeneratePoint = parentGeneratePoint;
         this.enemyEventQueue = new LinkedBlockingQueue<>();
         this.gameController = gameController;
@@ -79,7 +82,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
-//                addEvent(ITEM_ATTACK);
             }
         }
 
@@ -108,6 +110,8 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         }
     }
 
+
+
     public int handleEvent(int eventCode) {
         switch (eventCode) {
             case ITEM_MOVE_DOWN:
@@ -124,7 +128,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 }
                 return changeLocationAndDirection(eventCode);
             case ITEM_ATTACK  :
-
                 Bullet bullet = new Bullet(direction,x,y, gameController);
                 bullet.draw();
                 bullet.move();
@@ -139,45 +142,98 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     }
 
     private int changeLocationAndDirection(int eventCode) {
+        int xLast = x;
+        int yLast = y;
         switch (eventCode) {
+
             case ITEM_MOVE_UP:
-                if(collisionDetection()){
-                    break;
-                }
                 y -= 30;
-                locationUpdate();
-                direction = DIRECT_UP;
+//                System.out.println(collisionDetection());
+                if (collisionDetection() || edgeDetection()) {
+                    y = yLast;
+                } else {
+                    locationUpdate();
+                    directUpdateU(this.direction);
+                    direction = DIRECT_UP;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_DOWN:
-                if(collisionDetection()){
-                    break;
-                }
                 y += 30;
-                locationUpdate();
-                direction = DIRECT_DOWN;
+//                System.out.println(collisionDetection());
+                if (collisionDetection() || edgeDetection()) {
+                    y = yLast;
+                } else {
+                    locationUpdate();
+                    directUpdateD(this.direction);
+                    direction = DIRECT_DOWN;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_RIGHT :
-                if(collisionDetection()){
-                    break;
-                }
                 x += 30;
-                locationUpdate();
-                direction = DIRECT_RIGHT;
-                return EVENT_HANDLE_SUCCEED;
-            case ITEM_MOVE_LEFT :
-                if(collisionDetection()){
-                    break;
+//                System.out.println(collisionDetection());
+                if (collisionDetection() || edgeDetection()) {
+                    x = xLast;
+                } else {
+                    locationUpdate();
+                    directUpdateR(this.direction);
+                    direction = DIRECT_RIGHT;
                 }
-                x -= 30;
-                locationUpdate();
-                direction = DIRECT_LEFT;
                 return EVENT_HANDLE_SUCCEED;
+
+            case ITEM_MOVE_LEFT :
+                x -= 30;
+//                System.out.println(collisionDetection());
+                if (collisionDetection() || edgeDetection()) {
+                    x = xLast;
+                } else {
+                    locationUpdate();
+                    directUpdateL(this.direction);
+                    direction = DIRECT_LEFT;
+                }
+                return EVENT_HANDLE_SUCCEED;
+
         }
         return CASE_WONT_HAPPEN;
     }
+
+    public boolean edgeDetection() {
+        if (x < 0 || x + width > 1000 || y < 0 || y + height > 800) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean collisionDetection() {
-        return false;
+        boolean result = false;
+
+        for (Item item : gameController.getCheckpointMap().getBarriers()) {
+            // the coordinate of next step
+            if (item == this){
+                continue;
+            }
+            int targetX = item.getX();
+            int targetY = item.getY();
+
+            // detect collision
+            if  (
+                    ((x >= targetX && x< (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x >= targetX && x < (targetX + item.getWidth())) && (y + height >=  targetY && y + height < (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y + height >=  targetY && y + height < (targetY + item.getHeight())) )
+//                    (x >= targetX && x < (targetX + item.getWidth())) &&
+//                    (y >=  targetY && y < (targetY + item.getHeight()))
+            ) {
+//                CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
+//                gameController.getCollisionHandler().addCollisionEvent(collisionEvent);
+                result = true;
+                break;
+            }
+        }
+
+        return result;
     }
 
     private final int DIRECT_UP = 10001;
@@ -186,14 +242,25 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private final int DIRECT_RIGHT = 10004;
 
     @Override
+    public void onCollision() {
+        onBeingAttacked();
+    }
+
+    @Override
     public void onBeingAttacked() {
         hp = hp-10;
         if (hp < 0){
-            //死亡
-        }else{
-            //更新血量
+            delete();
         }
     }
+
+    public void delete(){
+        enemyExist--;
+        GameWindow gameWindow = GameWindow.getInstance();
+        gameWindow.remove(itemComponent);
+        gameController.deleteItem(this);
+    }
+
 
 }
 

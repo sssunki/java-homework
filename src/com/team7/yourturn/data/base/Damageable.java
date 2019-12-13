@@ -1,5 +1,5 @@
 package com.team7.yourturn.data.base;
 
-public interface Damageable {
+public interface Damageable extends Collidable{
     public void onBeingAttacked();
 }

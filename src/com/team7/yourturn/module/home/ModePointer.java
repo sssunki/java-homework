@@ -9,6 +9,11 @@ import static com.team7.yourturn.utils.EventCode.*;
 
 public class ModePointer extends BaseViewModel {
 
+    @Override
+    public void onCollision() {
+
+    }
+
     private final int POINT_TO_ONE_PLAYER = 1100;
     private final int POINT_TO_TWO_PLAYER = 1101;
     private final int DEFAULT_X = 400;

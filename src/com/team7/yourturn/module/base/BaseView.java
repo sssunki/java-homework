@@ -2,8 +2,7 @@ package com.team7.yourturn.module.base;
 
 import com.team7.yourturn.data.base.Item;
 
-public class BaseView extends Item {
-
+public abstract class BaseView extends Item {
 
     protected ItemComponent itemComponent;
     protected GameWindow gameWindow = GameWindow.getInstance();
