@@ -43,8 +43,8 @@ public abstract class Item implements Collidable{
         this.height = height;
     }
 
-    @Override
-    public void onCollision() {
-
-    }
+//    @Override
+//    public void onCollision() {
+//
+//    }
 }

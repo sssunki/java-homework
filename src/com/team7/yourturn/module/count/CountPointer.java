@@ -28,6 +28,11 @@ public class CountPointer extends BaseViewModel {
         itemComponent.setLocation(x, y);
     }
 
+    @Override
+    public void onCollision() {
+
+    }
+
     public int HandleEvent(int eventCode) {
         switch (eventCode) {
 

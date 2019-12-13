@@ -15,6 +15,11 @@ public class CollisionEvent {
         this.consumerY = consumerY;
     }
 
+    public CollisionEvent(Item producer, Item consumers) {
+        this.producer = producer;
+        this.consumers = consumers;
+    }
+
     public int getConsumerX() {
         return consumerX;
     }

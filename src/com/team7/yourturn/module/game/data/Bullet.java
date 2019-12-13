@@ -15,12 +15,14 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
 
     private int direction;
     private GameController controller;
+    int moveFlag;
 
     public Bullet(int direction, int x, int y, GameController controller) {
         this.x = x;
         this.y = y;
         this.direction = direction;
         this.controller = controller;
+        moveFlag = 0;
         itemComponent = new ItemComponent("bullet .jpg", 20, 20);
     }
 
@@ -51,6 +53,7 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
                         e.printStackTrace();
                     }
                 }
+                delete();
             }
         }).start();
     }
@@ -73,6 +76,7 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
     }
 
     private void delete() {
+        gameWindow.remove(itemComponent);
 
     }
 
@@ -82,14 +86,31 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
         boolean result = false;
         for (Item item : controller.getCheckpointMap().getBarriers()) {
             // the coordinate of next step
+            if (moveFlag < 10) {
+                moveFlag++;
+                break;
+            }
             int targetX = item.getX();
             int targetY = item.getY();
 
             // detect collision
-            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
-                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
-                CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
+            if  (
+//                    ((x >= targetX && x< (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+//                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+//                            || ((x >= targetX && x < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+//                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+//
+                    (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (y >=  targetY && y < (targetY + item.getHeight()))
+            ) {
+                if (item instanceof BulletThroughWall) {
+                    return false;
+                }
+                CollisionEvent collisionEvent =
+//                        new CollisionEvent(this, targetX, targetY);
+                        new CollisionEvent(this,item);
                 controller.getCollisionHandler().addCollisionEvent(collisionEvent);
+//                System.out.println(controller.getCollisionHandler().getCollisionEventsQueue().size());
                 result = true;
                 break;
             }

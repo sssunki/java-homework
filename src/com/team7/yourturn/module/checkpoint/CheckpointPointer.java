@@ -97,7 +97,10 @@ public class CheckpointPointer extends BaseViewModel {
 
     }
 
+    @Override
+    public void onCollision() {
 
+    }
 
     public int getPointerState() {
         return pointerState;

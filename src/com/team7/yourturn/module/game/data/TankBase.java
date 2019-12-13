@@ -18,6 +18,11 @@ public class TankBase extends BaseView {
         itemComponent = new ItemComponent(filename, width, height);
     }
 
+    @Override
+    public void onCollision() {
+
+    }
+
     public void onBeingAttacked() {
         //game over
         Image image = new ImageIcon("src/image/explode1.jpg").getImage();

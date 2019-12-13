@@ -9,6 +9,11 @@ import static com.team7.yourturn.utils.EventCode.GENERATE_AN_ENEMY;
 
 public class EnemyGeneratePoint extends BaseView {
 
+    @Override
+    public void onCollision() {
+
+    }
+
     public boolean readyToGenerateEnemy;
 
     private BaseController controller;
