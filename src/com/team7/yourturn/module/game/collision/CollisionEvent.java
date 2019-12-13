@@ -9,11 +9,14 @@ public class CollisionEvent {
     private int consumerX;
     private int consumerY;
 
-    public CollisionEvent(Item producer, int consumerX, int consumerY) {
+    public CollisionEvent(Item producer,int consumerX, int consumerY) {
         this.producer = producer;
         this.consumerX = consumerX;
         this.consumerY = consumerY;
     }
+
+
+
 
     public int getConsumerX() {
         return consumerX;

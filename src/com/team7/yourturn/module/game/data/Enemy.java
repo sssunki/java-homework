@@ -18,7 +18,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private GameController gameController;
 
     private int enemyId;
-    private int direction;
+    private int direction=10002;        //初始化敌人的方向与图片方向一致
     private int hp;
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint) {
@@ -27,7 +27,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         this.hp = 10;
         this.parentGeneratePoint = parentGeneratePoint;
         this.enemyEventQueue = new LinkedBlockingQueue<>();
-        this.itemComponent = new ItemComponent("test.jpg",width,height);
+        this.itemComponent = new ItemComponent("enemy1DOWN.jpg",width,height);
     }
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint,GameController gameController) {
@@ -85,13 +85,13 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             int eventCodeSeed = (int)(1+Math.random()*(5-1+1));
             switch (eventCodeSeed) {
                 case 1:
-                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
+                    enemyEventQueue.offer(ITEM_MOVE_UP);
                     break;
                 case 2:
                     enemyEventQueue.offer(ITEM_MOVE_DOWN);
                     break;
                 case 3:
-                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
+                    enemyEventQueue.offer(ITEM_MOVE_LEFT);
                     break;
                 case 4:
                     enemyEventQueue.offer(ITEM_MOVE_RIGHT);
@@ -140,25 +140,51 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private int changeLocationAndDirection(int eventCode) {
         switch (eventCode) {
             case ITEM_MOVE_UP:
-                y -= 30;
+                if(y<=0)
+                {}
+                else{
+                    y -= 30;
+                    directUpdateU(this.direction);
+
+                    direction = DIRECT_UP;
+                }
                 locationUpdate();
-                direction = DIRECT_UP;
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_DOWN:
-                y += 30;
+                if(y>=800)
+                    return EVENT_HANDLE_SUCCEED;
+                else{
+                    y += 30;
+                    directUpdateD(this.direction);
+
+                    direction = DIRECT_DOWN;
+                }
                 locationUpdate();
-                direction = DIRECT_DOWN;
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_RIGHT :
-                x += 30;
+                if(x>=1000)
+                    return EVENT_HANDLE_SUCCEED;
+                else{
+                    x += 30;
+                    directUpdateR(this.direction);
+                    direction = DIRECT_RIGHT;
+                }
                 locationUpdate();
-                direction = DIRECT_RIGHT;
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_LEFT :
-                x -= 30;
+                if(x<=0)
+                    return EVENT_HANDLE_SUCCEED;
+                else{
+                    x -= 30;
+                    directUpdateL(this.direction);
+                    direction = DIRECT_LEFT;
+                }
                 locationUpdate();
-                direction = DIRECT_LEFT;
                 return EVENT_HANDLE_SUCCEED;
+
         }
         return CASE_WONT_HAPPEN;
     }
@@ -177,8 +203,12 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         hp = hp-10;
         if (hp < 0){
             //死亡
+            //x=1200;
+            //locationUpdate();
+            System.out.println("死亡！");
         }else{
             //更新血量
+            System.out.println("当前血量为："+hp);
         }
     }
 
