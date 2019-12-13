@@ -6,17 +6,21 @@ import com.team7.yourturn.module.base.BaseView;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.GameWindow;
 import com.team7.yourturn.module.base.ItemComponent;
+import com.team7.yourturn.module.game.GameController;
 
 public class NormalWall extends BaseViewModel {
     private int hp;
-    public NormalWall(String filename, int x, int y) {
+    private GameController gameController;
+    public NormalWall(String filename, int x, int y, GameController gameController) {
         this.x = x;
         this.y = y;
         itemComponent = new ItemComponent(filename, width, height);
         hp = 100;
+        this.gameController = gameController;
     }
 
 
+    @Override
     public void onCollision() {
         hp = hp -10;
         if(hp == 0){
@@ -28,6 +32,7 @@ public class NormalWall extends BaseViewModel {
     public void delete(){
         GameWindow gameWindow = GameWindow.getInstance();
         gameWindow.remove(itemComponent);
+        gameController.deletItem(this);
     }
 
 }

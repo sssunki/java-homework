@@ -11,7 +11,4 @@ public class BulletThroughWall  extends BaseView {
         itemComponent = new ItemComponent(filename, width, height);
     }
 
-    public void onBeingAttacked() {
-
-    }
 }

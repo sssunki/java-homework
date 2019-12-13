@@ -12,7 +12,4 @@ public class UnDamageableWall extends BaseView {
         itemComponent = new ItemComponent(filename, width, height);
     }
 
-    public void onBeingAttacked() {
-
-    }
 }

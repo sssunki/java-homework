@@ -64,7 +64,7 @@ public class GameController extends BaseController {
 
     @Override
     protected void initView() {
-        player = new Player("player1.jpg",400,700);
+        player = new Player("player1.jpg",400,700,this);
         enemyGeneratePoints = new ArrayList<>();
         enemyGeneratePoints.add(new EnemyGeneratePoint(0, 0, this));
         enemyGeneratePoints.add(new EnemyGeneratePoint(300, 0, this));
@@ -82,7 +82,7 @@ public class GameController extends BaseController {
             ((BaseView) item).draw();
         }
     }
-
+    public void deletItem (Item item){items.remove(item);}
     private void initEnemy() {
         int i = (int)(1+Math.random()*(3-1+1));
 
@@ -153,6 +153,7 @@ public class GameController extends BaseController {
         public void addCollisionEvent(CollisionEvent collisionEvent) {
             collisionEventsQueue.offer(collisionEvent);
         }
+
 
         public void start() {
             new Thread(new Runnable() {

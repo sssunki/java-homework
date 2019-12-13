@@ -181,15 +181,13 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         hp = hp-10;
         if (hp < 0){
             delete();
-            //还有从列表中删除他
-        }else{
-            //更新血量
         }
     }
 
     public void delete(){
         GameWindow gameWindow = GameWindow.getInstance();
         gameWindow.remove(itemComponent);
+        gameController.deletItem(this);
     }
 
 
