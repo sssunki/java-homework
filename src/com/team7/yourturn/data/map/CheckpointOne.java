@@ -10,6 +10,13 @@ public class CheckpointOne extends CheckpointMap{
 
     {
         barriers = new LinkedList<>();
+        barriers.add(new NormalWall("test.jpg",100,400));
+        barriers.add(new NormalWall("test.jpg",200,400));
+        barriers.add(new NormalWall("test.jpg",300,400));
+        barriers.add(new NormalWall("test.jpg",400,400));
+        barriers.add(new NormalWall("test.jpg",500,400));
+        barriers.add(new NormalWall("test.jpg",600,400));
+        barriers.add(new NormalWall("test.jpg",700,400));
         barriers.add(new NormalWall("test.jpg",800,400));
     }
 
