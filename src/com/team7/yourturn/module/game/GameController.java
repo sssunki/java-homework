@@ -121,7 +121,7 @@ public class GameController extends BaseController {
                 bullet.move();
                 returnCode = EVENT_HANDLE_SUCCEED;
                 break;
-                
+
             case GENERATE_AN_ENEMY:
                 initEnemy();
                 returnCode = EVENT_HANDLE_SUCCEED;

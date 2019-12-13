@@ -111,8 +111,13 @@ public class Player extends BaseViewModel implements Movable , Damageable {
             int targetX = item.getX();
             int targetY = item.getY();
 
-            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
-                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+            if (
+                    ((x >= targetX && x< (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x >= targetX && x < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+
+            ) {
                 result = true;
                 break;
             }

@@ -88,16 +88,16 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             int eventCodeSeed = (int)(1+Math.random()*(5-1+1));
             switch (eventCodeSeed) {
                 case 1:
-                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
+                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
                     break;
                 case 2:
-                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
+                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
                     break;
                 case 3:
-                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
+                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
                     break;
                 case 4:
-                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
+                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
                     break;
                 case 5:
 //                    enemyEventQueue.offer(ITEM_ATTACK);
@@ -204,8 +204,14 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             int targetY = item.getY();
 
             // detect collision
-            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
-                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+            if  (
+                    ((x >= targetX && x< (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+                            || ((x >= targetX && x < (targetX + item.getWidth())) && (y + height >=  targetY && y + height < (targetY + item.getHeight())) )
+                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y + height >=  targetY && y + height < (targetY + item.getHeight())) )
+//                    (x >= targetX && x < (targetX + item.getWidth())) &&
+//                    (y >=  targetY && y < (targetY + item.getHeight()))
+            ) {
                 CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
                 gameController.getCollisionHandler().addCollisionEvent(collisionEvent);
                 result = true;

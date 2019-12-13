@@ -15,12 +15,14 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
 
     private int direction;
     private GameController controller;
+    int moveFlag;
 
     public Bullet(int direction, int x, int y, GameController controller) {
         this.x = x;
         this.y = y;
         this.direction = direction;
         this.controller = controller;
+        moveFlag = 0;
         itemComponent = new ItemComponent("bullet .jpg", 20, 20);
     }
 
@@ -82,12 +84,23 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
         boolean result = false;
         for (Item item : controller.getCheckpointMap().getBarriers()) {
             // the coordinate of next step
+            if (item instanceof Player && moveFlag < 10) {
+                moveFlag++;
+                continue;
+            }
             int targetX = item.getX();
             int targetY = item.getY();
 
             // detect collision
-            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
-                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+            if  (
+//                    ((x >= targetX && x< (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+//                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y >=  targetY && y < (targetY + item.getHeight())) )
+//                            || ((x >= targetX && x < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+//                            || ((x + width >= targetX && x + width < (targetX + item.getWidth())) && (y + height - 30>=  targetY && y + height - 30< (targetY + item.getHeight())) )
+//
+                    (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (y >=  targetY && y < (targetY + item.getHeight()))
+            ) {
                 CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
                 controller.getCollisionHandler().addCollisionEvent(collisionEvent);
                 result = true;
