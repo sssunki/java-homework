@@ -2,14 +2,19 @@ package com.team7.yourturn.module.game.data;
 
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
+import com.team7.yourturn.module.base.GameWindow;
 import com.team7.yourturn.module.base.ItemComponent;
+import com.team7.yourturn.module.game.GameController;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
 import static com.team7.yourturn.utils.EventCode.*;
 
 public class Player extends BaseViewModel implements Movable {
+
 
     private int direction;
 
@@ -30,6 +35,7 @@ public class Player extends BaseViewModel implements Movable {
             case KeyEvent.VK_PAGE_UP:
                 return ITEM_ATTACK;
             case KeyEvent.VK_SPACE:
+
                 return GAME_STOP;
             default:
                 return CASE_WONT_HAPPEN;

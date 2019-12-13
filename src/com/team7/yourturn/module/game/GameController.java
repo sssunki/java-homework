@@ -6,6 +6,7 @@ import com.team7.yourturn.data.map.CheckpointMap;
 import com.team7.yourturn.data.map.CheckpointOne;
 import com.team7.yourturn.module.base.BaseController;
 import com.team7.yourturn.module.base.BaseView;
+import com.team7.yourturn.module.base.GameWindow;
 import com.team7.yourturn.module.game.collision.CollisionEvent;
 import com.team7.yourturn.module.game.data.Bullet;
 import com.team7.yourturn.module.game.data.Enemy;
@@ -13,8 +14,11 @@ import com.team7.yourturn.module.game.data.EnemyGeneratePoint;
 import com.team7.yourturn.module.game.data.Player;
 import com.team7.yourturn.utils.Bundle;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.*;
+import java.util.List;
 
 import static com.team7.yourturn.utils.EventCode.*;
 
@@ -68,7 +72,7 @@ public class GameController extends BaseController {
         enemies = new ArrayList<>();
         player.draw();
         initMap();
-//        initEnemy();
+        initEnemy();
     }
 
     private void initMap() {
@@ -81,6 +85,7 @@ public class GameController extends BaseController {
 
     private void initEnemy() {
         int i = (int)(1+Math.random()*(3-1+1));
+
         Enemy enemy = new Enemy(enemyGeneratePoints.get(i - 1).getX(),
                 enemyGeneratePoints.get(i - 1).getY(),enemyGeneratePoints.get(i - 1));
         enemies.add(enemy);
@@ -138,6 +143,7 @@ public class GameController extends BaseController {
 
     public class CollisionHandler{
 
+
         private Queue<CollisionEvent> collisionEventsQueue;
 
         public CollisionHandler() {
@@ -156,6 +162,7 @@ public class GameController extends BaseController {
                         if (!collisionEventsQueue.isEmpty()) {
                             CollisionEvent collisionEvent = collisionEventsQueue.poll();
                             for (Item item: items) {
+
 
                             }
                         }

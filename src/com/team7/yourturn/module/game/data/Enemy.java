@@ -3,6 +3,7 @@ package com.team7.yourturn.module.game.data;
 import com.team7.yourturn.data.base.Damageable;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
+import com.team7.yourturn.module.base.GameWindow;
 import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
 
@@ -179,10 +180,16 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     public void onBeingAttacked() {
         hp = hp-10;
         if (hp < 0){
-            //死亡
+            delete();
+            //还有从列表中删除他
         }else{
             //更新血量
         }
+    }
+
+    public void delete(){
+        GameWindow gameWindow = GameWindow.getInstance();
+        gameWindow.remove(itemComponent);
     }
 
 

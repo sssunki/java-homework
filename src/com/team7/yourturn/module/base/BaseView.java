@@ -4,7 +4,6 @@ import com.team7.yourturn.data.base.Item;
 
 public class BaseView extends Item {
 
-
     protected ItemComponent itemComponent;
     protected GameWindow gameWindow = GameWindow.getInstance();
 
