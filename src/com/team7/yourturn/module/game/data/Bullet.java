@@ -7,6 +7,9 @@ import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
 import com.team7.yourturn.module.game.collision.CollisionEvent;
 
+import static com.team7.yourturn.utils.EventCode.*;
+import static com.team7.yourturn.utils.EventCode.ITEM_MOVE_LEFT;
+
 public class Bullet extends BaseViewModel implements Movable {
 
     private int direction;
@@ -17,17 +20,31 @@ public class Bullet extends BaseViewModel implements Movable {
         this.y = y;
         this.direction = direction;
         this.controller = controller;
-        itemComponent = new ItemComponent("test.jpg", width, height);
+        itemComponent = new ItemComponent("bullet .jpg", 20, 20);
     }
 
     public void move() {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                confirmDirection(direction);
                 while(!collisionDetection()) {
                     try {
                         Thread.sleep(30);
-                        x += 10;
+                        switch (direction) {
+                            case DIRECT_UP:
+                                y -= 10;
+                                break;
+                            case DIRECT_DOWN:
+                                y += 10;
+                                break;
+                            case DIRECT_RIGHT :
+                                x += 10;
+                                break;
+                            case DIRECT_LEFT :
+                                x -= 10;
+                                break;
+                        }
                         locationUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -36,6 +53,24 @@ public class Bullet extends BaseViewModel implements Movable {
             }
         }).start();
     }
+
+    private void confirmDirection(int  direction){
+        switch (direction) {
+            case DIRECT_UP:
+                break;
+            case DIRECT_DOWN:
+                directUpdateR(direction);
+                directUpdateR(direction);
+                break;
+            case DIRECT_RIGHT :
+                directUpdateD(direction);
+                break;
+            case DIRECT_LEFT :
+                directUpdateD(direction);
+                break;
+        }
+    }
+
 
     @Override
     public boolean collisionDetection() {

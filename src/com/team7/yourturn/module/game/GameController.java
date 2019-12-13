@@ -60,7 +60,7 @@ public class GameController extends BaseController {
 
     @Override
     protected void initView() {
-        player = new Player("test.jpg",400,700);
+        player = new Player("player1.jpg",400,700);
         enemyGeneratePoints = new ArrayList<>();
         enemyGeneratePoints.add(new EnemyGeneratePoint(0, 0, this));
         enemyGeneratePoints.add(new EnemyGeneratePoint(300, 0, this));

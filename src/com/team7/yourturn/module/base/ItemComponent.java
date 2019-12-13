@@ -25,7 +25,8 @@ public class ItemComponent extends JComponent {
     private Image image;
 
     public ItemComponent(String filename, int width, int height) {
-        image = new ImageIcon(getClass().getResource(filename)).getImage();
+        //image = new ImageIcon(getClass().getResource(filename)).getImage();
+        image = new ImageIcon("src/image/"+filename).getImage();
         this.width = width;
         this.height = height;
     }

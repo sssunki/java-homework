@@ -2,6 +2,8 @@ package com.team7.yourturn.module.base;
 
 import com.team7.yourturn.module.game.data.Player;
 
+
+
 public abstract class BaseViewModel extends BaseView{
 
 
@@ -9,8 +11,8 @@ public abstract class BaseViewModel extends BaseView{
         itemComponent.setLocation(x,y);
     }
 
-    protected void directUpdateL(Player player) {
-            int thisDirection=player.getDirection();
+    protected void directUpdateL(int direction) {
+            int thisDirection=direction;
             //UP
             if(thisDirection==10001)
                 itemComponent.setImage(itemComponent.rotateImageLeft90(itemComponent));
@@ -22,9 +24,9 @@ public abstract class BaseViewModel extends BaseView{
                 itemComponent.setImage(itemComponent.rotateImage180(itemComponent));
 
     }
-    protected void directUpdateR(Player player) {
+    protected void directUpdateR(int direction) {
 
-        int thisDirection=player.getDirection();
+        int thisDirection=direction;
         //UP
         if(thisDirection==10001)
             itemComponent.setImage(itemComponent.rotateImageRight90(itemComponent));
@@ -36,8 +38,8 @@ public abstract class BaseViewModel extends BaseView{
             itemComponent.setImage(itemComponent.rotateImage180(itemComponent));
 
     }
-    protected void directUpdateU(Player player) {
-        int thisDirection=player.getDirection();
+    protected void directUpdateU(int direction) {
+        int thisDirection=direction;
         //LEFT
         if(thisDirection==10003)
             itemComponent.setImage(itemComponent.rotateImageRight90(itemComponent));
@@ -49,8 +51,8 @@ public abstract class BaseViewModel extends BaseView{
             itemComponent.setImage(itemComponent.rotateImageLeft90(itemComponent));
 
     }
-    protected void directUpdateD(Player player) {
-        int thisDirection=player.getDirection();
+    protected void directUpdateD(int direction) {
+        int thisDirection=direction;
         //UP
         if(thisDirection==10001)
             itemComponent.setImage(itemComponent.rotateImage180(itemComponent));
