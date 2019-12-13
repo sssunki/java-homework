@@ -24,6 +24,7 @@ public class BaseView extends Item {
 
     private void initLocation() {
         itemComponent.setLocation(x, y);
+//        gameWindow.setVisible(true);
     }
 
 }

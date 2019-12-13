@@ -14,6 +14,14 @@ public class ItemComponent extends JComponent {
     private int x;
     private int y;
 
+    public  void setHeight(int height){
+        this.height = height;
+    }
+
+    public void setWidth(int width){
+        this.width = width;
+    }
+
     public Image getImage() {
         return image;
     }
@@ -32,9 +40,9 @@ public class ItemComponent extends JComponent {
     }
 
     public ItemComponent(String filename) {
-        image = new ImageIcon(getClass().getResource(filename)).getImage();
-        width = DEFAULT_WIDTH;
-        height = DEFAULT_HEIGHT;
+        image = new ImageIcon("src/image/"+filename).getImage();
+        width = 450;
+        height = 350;
     }
 
     @Override

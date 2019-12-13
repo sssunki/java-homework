@@ -1,5 +1,6 @@
 package com.team7.yourturn.module.base;
 
+import com.team7.yourturn.module.count.CountController;
 import com.team7.yourturn.module.game.GameController;
 import com.team7.yourturn.module.home.HomeController;
 import com.team7.yourturn.test.ItemComponent;
@@ -30,6 +31,10 @@ public class GameWindow extends JFrame {
         gameWindow.setController(startController);
 //        GameController gameController = new GameController();
 //        gameWindow.setController(gameController);
+
+//        CountController controller =new CountController();
+//        gameWindow.setController(controller);
+
     }
 
     public void addComponent(JComponent ... jComponents) {
