@@ -5,6 +5,8 @@ import com.team7.yourturn.module.base.BaseView;
 import com.team7.yourturn.module.game.GameController;
 import com.team7.yourturn.utils.EventCode;
 
+import static com.team7.yourturn.module.game.GameController.enemyExist;
+import static com.team7.yourturn.module.game.GameController.enemyLeft;
 import static com.team7.yourturn.utils.EventCode.GENERATE_AN_ENEMY;
 
 public class EnemyGeneratePoint extends BaseView {
@@ -29,13 +31,16 @@ public class EnemyGeneratePoint extends BaseView {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 while (true) {
-                    int enemyLeft = GameController.getEnemyLeft();
-                    if (enemyLeft != 0) {
-                        int enemyExist = 3 - enemyLeft;
-                        System.out.println(enemyExist);
+                    if (enemyLeft != 0 && enemyExist != 3) {
                         controller.addEvent(GENERATE_AN_ENEMY);
-                        GameController.setEnemyLeft(enemyLeft - 1);
+                        enemyExist++;
+                        enemyLeft--;
                     }
                 }
             }

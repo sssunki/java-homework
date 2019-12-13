@@ -12,6 +12,7 @@ import com.team7.yourturn.module.game.collision.CollisionEvent;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import static com.team7.yourturn.module.game.GameController.enemyExist;
 import static com.team7.yourturn.utils.EventCode.*;
 
 public class Enemy extends BaseViewModel implements Movable, Damageable {
@@ -91,16 +92,16 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                     enemyEventQueue.offer(ITEM_MOVE_DOWN);
                     break;
                 case 2:
-                    enemyEventQueue.offer(ITEM_MOVE_DOWN);
+                    enemyEventQueue.offer(ITEM_MOVE_UP);
                     break;
                 case 3:
                     enemyEventQueue.offer(ITEM_MOVE_RIGHT);
                     break;
                 case 4:
-                    enemyEventQueue.offer(ITEM_MOVE_RIGHT);
+                    enemyEventQueue.offer(ITEM_MOVE_LEFT);
                     break;
                 case 5:
-//                    enemyEventQueue.offer(ITEM_ATTACK);
+                    enemyEventQueue.offer(ITEM_ATTACK);
                     break;
                 default:
                     break;
@@ -148,7 +149,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_UP:
                 y -= 30;
 //                System.out.println(collisionDetection());
-                if (collisionDetection()) {
+                if (collisionDetection() || edgeDetection()) {
                     y = yLast;
                 } else {
                     locationUpdate();
@@ -160,7 +161,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_DOWN:
                 y += 30;
 //                System.out.println(collisionDetection());
-                if (collisionDetection()) {
+                if (collisionDetection() || edgeDetection()) {
                     y = yLast;
                 } else {
                     locationUpdate();
@@ -172,7 +173,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_RIGHT :
                 x += 30;
 //                System.out.println(collisionDetection());
-                if (collisionDetection()) {
+                if (collisionDetection() || edgeDetection()) {
                     x = xLast;
                 } else {
                     locationUpdate();
@@ -184,7 +185,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_LEFT :
                 x -= 30;
 //                System.out.println(collisionDetection());
-                if (collisionDetection()) {
+                if (collisionDetection() || edgeDetection()) {
                     x = xLast;
                 } else {
                     locationUpdate();
@@ -195,6 +196,13 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
 
         }
         return CASE_WONT_HAPPEN;
+    }
+
+    public boolean edgeDetection() {
+        if (x < 0 || x + width > 1000 || y < 0 || y + height > 800) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -247,6 +255,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     }
 
     public void delete(){
+        enemyExist--;
         GameWindow gameWindow = GameWindow.getInstance();
         gameWindow.remove(itemComponent);
         gameController.deleteItem(this);

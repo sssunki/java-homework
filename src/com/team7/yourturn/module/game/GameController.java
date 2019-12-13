@@ -29,7 +29,8 @@ public class GameController extends BaseController {
     private int checkpoint;
 
     private CheckpointMap checkpointMap;
-    private static int enemyLeft = 1;
+    public static int enemyLeft = 20;
+    public static int enemyExist = 0;
     private List<EnemyGeneratePoint> enemyGeneratePoints;
 
     private CollisionHandler collisionHandler;
@@ -153,7 +154,6 @@ public class GameController extends BaseController {
         if (enemyLeft != 0) {
             addEvent(GENERATE_AN_ENEMY);
         }
-
         return false;
     }
 
