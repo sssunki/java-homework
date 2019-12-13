@@ -1,5 +1,5 @@
 package com.team7.yourturn.data.base;
 
-public interface Movable {
+public interface Movable extends Collidable{
     boolean collisionDetection();
 }

@@ -31,6 +31,7 @@ public class GameController extends BaseController {
 
     private CollisionHandler collisionHandler;
     private Player player;
+    private volatile Player playerCopy;
     private List<Enemy> enemies;
     private List<Item> items;
 
@@ -60,7 +61,7 @@ public class GameController extends BaseController {
 
     @Override
     protected void initView() {
-        player = new Player("player1.jpg",400,700);
+        player = new Player("player1.jpg",400,700, this);
         enemyGeneratePoints = new ArrayList<>();
         enemyGeneratePoints.add(new EnemyGeneratePoint(0, 0, this));
         enemyGeneratePoints.add(new EnemyGeneratePoint(300, 0, this));
@@ -74,41 +75,60 @@ public class GameController extends BaseController {
     private void initMap() {
         checkpointMap = new CheckpointOne();
         items = checkpointMap.getBarriers();
+
         for (Item item : items) {
             ((BaseView) item).draw();
         }
+
+        playerCopy = generatePlayerCopy();
+        items.add(playerCopy);
     }
 
     private void initEnemy() {
         int i = (int)(1+Math.random()*(3-1+1));
         Enemy enemy = new Enemy(enemyGeneratePoints.get(i - 1).getX(),
-                enemyGeneratePoints.get(i - 1).getY(),enemyGeneratePoints.get(i - 1));
+                enemyGeneratePoints.get(i - 1).getY(),enemyGeneratePoints.get(i - 1), this);
         enemies.add(enemy);
         items.add(enemy);
         enemy.draw();
         enemy.start();
     }
 
+    private Player generatePlayerCopy() {
+        return new Player("player1.jpg",player.getX(),player.getY(),this);
+    }
+
     @Override
     protected int handleEvent(int eventCode) {
+
+        int returnCode = CASE_WONT_HAPPEN;
+
         switch(eventCode){
             case KeyEvent.VK_UP:
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_RIGHT:
-                return player.handleEvent(eventCode);
+                items.remove(playerCopy);
+                returnCode = player.handleEvent(eventCode);
+                playerCopy = generatePlayerCopy();
+                items.add(playerCopy);
+                break;
+
             case KeyEvent.VK_PAGE_UP:
             case KeyEvent.VK_SPACE:
                 Bullet bullet = new Bullet(player.getDirection(),player.getX(),player.getY(), this);
                 bullet.draw();
                 bullet.move();
-                return EVENT_HANDLE_SUCCEED;
+                returnCode = EVENT_HANDLE_SUCCEED;
+                break;
+                
             case GENERATE_AN_ENEMY:
                 initEnemy();
-                return EVENT_HANDLE_SUCCEED;
-
+                returnCode = EVENT_HANDLE_SUCCEED;
+                break;
         }
-        return CASE_WONT_HAPPEN;
+
+        return returnCode;
     }
 
     public static synchronized int getEnemyLeft() {
@@ -154,10 +174,26 @@ public class GameController extends BaseController {
                 public void run() {
                     while (true) {
                         if (!collisionEventsQueue.isEmpty()) {
+                            // get collision event
                             CollisionEvent collisionEvent = collisionEventsQueue.poll();
-                            for (Item item: items) {
 
+                            // init the consumer and producer
+                            Item consumerItem = null;
+                            Item producerItem = collisionEvent.getProducer();
+                            for (Item item: items) {
+                                if ((item.getX() == collisionEvent.getConsumerX()) &&
+                                        (item.getY() == collisionEvent.getConsumerY())) {
+                                    consumerItem = item;
+                                }
                             }
+
+                            // call consumer's and producer's onCollision method.
+                            if (consumerItem != null) {
+                                // judge null
+                                consumerItem.onCollision();
+                            }
+                            producerItem.onCollision();
+
                         }
                     }
                 }

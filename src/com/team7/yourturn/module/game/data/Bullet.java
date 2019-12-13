@@ -1,5 +1,6 @@
 package com.team7.yourturn.module.game.data;
 
+import com.team7.yourturn.data.base.Damageable;
 import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
@@ -10,7 +11,7 @@ import com.team7.yourturn.module.game.collision.CollisionEvent;
 import static com.team7.yourturn.utils.EventCode.*;
 import static com.team7.yourturn.utils.EventCode.ITEM_MOVE_LEFT;
 
-public class Bullet extends BaseViewModel implements Movable {
+public class Bullet extends BaseViewModel implements Movable , Damageable {
 
     private int direction;
     private GameController controller;
@@ -71,6 +72,10 @@ public class Bullet extends BaseViewModel implements Movable {
         }
     }
 
+    private void delete() {
+
+    }
+
 
     @Override
     public boolean collisionDetection() {
@@ -85,13 +90,22 @@ public class Bullet extends BaseViewModel implements Movable {
                     (y >=  targetY && y < (targetY + item.getHeight())) ) {
                 CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
                 controller.getCollisionHandler().addCollisionEvent(collisionEvent);
-                System.out.println("collision happen");
                 result = true;
                 break;
             }
         }
 
         return result;
+    }
+
+    @Override
+    public void onBeingAttacked() {
+
+    }
+
+    @Override
+    public void onCollision() {
+        delete();
     }
 
     private final int DIRECT_UP = 10001;

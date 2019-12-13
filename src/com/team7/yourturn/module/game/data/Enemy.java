@@ -1,10 +1,12 @@
 package com.team7.yourturn.module.game.data;
 
 import com.team7.yourturn.data.base.Damageable;
+import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.data.base.Movable;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.ItemComponent;
 import com.team7.yourturn.module.game.GameController;
+import com.team7.yourturn.module.game.collision.CollisionEvent;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -36,6 +38,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         this.hp = 10;
         this.parentGeneratePoint = parentGeneratePoint;
         this.enemyEventQueue = new LinkedBlockingQueue<>();
+        this.itemComponent = new ItemComponent("test.jpg",width,height);
         this.gameController = gameController;
     }
 
@@ -106,8 +109,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         }
     }
 
-
-
     public int handleEvent(int eventCode) {
         switch (eventCode) {
             case ITEM_MOVE_DOWN:
@@ -138,33 +139,81 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     }
 
     private int changeLocationAndDirection(int eventCode) {
+        int xLast = x;
+        int yLast = y;
         switch (eventCode) {
+
             case ITEM_MOVE_UP:
                 y -= 30;
-                locationUpdate();
-                direction = DIRECT_UP;
+                System.out.println(collisionDetection());
+                if (collisionDetection()) {
+                    y = yLast;
+                } else {
+                    locationUpdate();
+                    direction = DIRECT_UP;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_DOWN:
                 y += 30;
-                locationUpdate();
-                direction = DIRECT_DOWN;
+                System.out.println(collisionDetection());
+                if (collisionDetection()) {
+                    y = yLast;
+                } else {
+                    locationUpdate();
+                    direction = DIRECT_DOWN;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_RIGHT :
                 x += 30;
-                locationUpdate();
-                direction = DIRECT_RIGHT;
+                System.out.println(collisionDetection());
+                if (collisionDetection()) {
+                    x = xLast;
+                } else {
+                    locationUpdate();
+                    direction = DIRECT_RIGHT;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
             case ITEM_MOVE_LEFT :
                 x -= 30;
-                locationUpdate();
-                direction = DIRECT_LEFT;
+                System.out.println(collisionDetection());
+                if (collisionDetection()) {
+                    x = xLast;
+                } else {
+                    locationUpdate();
+                    direction = DIRECT_LEFT;
+                }
                 return EVENT_HANDLE_SUCCEED;
+
         }
         return CASE_WONT_HAPPEN;
     }
+
     @Override
     public boolean collisionDetection() {
-        return false;
+        boolean result = false;
+
+        for (Item item : gameController.getCheckpointMap().getBarriers()) {
+            // the coordinate of next step
+            if (item == this){
+                continue;
+            }
+            int targetX = item.getX();
+            int targetY = item.getY();
+
+            // detect collision
+            if  ( (x >= targetX && x < (targetX + item.getWidth())) &&
+                    (y >=  targetY && y < (targetY + item.getHeight())) ) {
+                CollisionEvent collisionEvent = new CollisionEvent(this, targetX, targetY);
+                gameController.getCollisionHandler().addCollisionEvent(collisionEvent);
+                result = true;
+                break;
+            }
+        }
+
+        return result;
     }
 
     private final int DIRECT_UP = 10001;
@@ -182,6 +231,9 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         }
     }
 
+    @Override
+    public void onCollision() {
 
+    }
 }
 
