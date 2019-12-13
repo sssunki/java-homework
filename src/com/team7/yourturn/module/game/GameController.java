@@ -27,7 +27,7 @@ public class GameController extends BaseController {
     private Bundle bundle;
     private int numOfPlayer;
     private int checkpoint;
-
+    public static int score = 100;
     private CheckpointMap checkpointMap;
     public static int enemyLeft = 20;
     public static int enemyExist = 0;
@@ -66,7 +66,7 @@ public class GameController extends BaseController {
 
     @Override
     protected void initView() {
-        player = new Player("player1.jpg",400,700,this);
+        player = new Player("player1.jpg",200,700,this);
         enemyGeneratePoints = new ArrayList<>();
         enemyGeneratePoints.add(new EnemyGeneratePoint(200, 100, this));
         enemyGeneratePoints.add(new EnemyGeneratePoint(500, 100, this));
@@ -78,7 +78,7 @@ public class GameController extends BaseController {
     }
 
     private void initMap() {
-        checkpointMap = new CheckpointThree();
+        checkpointMap = new CheckpointOne();
         checkpointMap.setController(this);
         checkpointMap.mapInit();
         items = checkpointMap.getBarriers();
@@ -130,6 +130,8 @@ public class GameController extends BaseController {
                 Bullet bullet = new Bullet(player.getDirection(),player.getX(),player.getY(), this);
                 bullet.draw();
                 bullet.move();
+                score -= 10;
+                System.out.println("enemy :" + enemyExist + "  \nscore :" + score);
                 returnCode = EVENT_HANDLE_SUCCEED;
                 break;
 
@@ -188,13 +190,12 @@ public class GameController extends BaseController {
                 public void run() {
                     System.out.println("handler start");
                     while (true) {
-//                        try {
-//                            Thread.sleep(300);
-//                        }catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-                        System.out.println("queue empty: " + collisionEventsQueue.isEmpty());
-                        if (!collisionEventsQueue.isEmpty()) {
+                        try {
+                            Thread.sleep(100);
+                        }catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if (!(collisionEventsQueue.isEmpty())) {
                             System.out.println("testtest");
                             // get collision event
                             CollisionEvent collisionEvent = collisionEventsQueue.poll();

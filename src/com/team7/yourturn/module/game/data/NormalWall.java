@@ -13,7 +13,7 @@ public class NormalWall extends BaseViewModel {
         this.x = x;
         this.y = y;
         itemComponent = new ItemComponent(filename, width, height);
-        hp = 20;
+        hp = 10;
         this.gameController = gameController;
     }
 

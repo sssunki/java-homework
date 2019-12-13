@@ -13,6 +13,7 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import static com.team7.yourturn.module.game.GameController.enemyExist;
+import static com.team7.yourturn.module.game.GameController.score;
 import static com.team7.yourturn.utils.EventCode.*;
 
 public class Enemy extends BaseViewModel implements Movable, Damageable {
@@ -77,7 +78,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         public void run() {
             while (true) {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     generateEventCode();
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -101,7 +102,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                     enemyEventQueue.offer(ITEM_MOVE_LEFT);
                     break;
                 case 5:
-                    enemyEventQueue.offer(ITEM_ATTACK);
+//                    enemyEventQueue.offer(ITEM_ATTACK);
                     break;
                 default:
                     break;
@@ -120,7 +121,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_RIGHT :
                 for (int i = 0; i <= 5; i++) {
                     try {
-                        Thread.sleep(600);
+                        Thread.sleep(200);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -134,7 +135,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case DAMAGE:
                 onBeingAttacked();
                 return EVENT_HANDLE_SUCCEED;
-            //case ENEMY_ITEM_DEATH:
+            case ENEMY_ITEM_DEATH:
 
             default:
                 return CASE_WONT_HAPPEN;
@@ -249,13 +250,15 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     @Override
     public void onBeingAttacked() {
         hp = hp-10;
-        if (hp < 0){
+        if (hp == 0){
             delete();
         }
     }
 
     public void delete(){
         enemyExist--;
+        score += 100;
+        System.out.println("enemy :" + enemyExist + "  \nscore :" + score);
         GameWindow gameWindow = GameWindow.getInstance();
         gameWindow.remove(itemComponent);
         gameController.deleteItem(this);

@@ -106,10 +106,13 @@ public class Bullet extends BaseViewModel implements Movable , Damageable {
                 if (item instanceof BulletThroughWall) {
                     return false;
                 }
+                System.out.println("happen");
                 CollisionEvent collisionEvent =
 //                        new CollisionEvent(this, targetX, targetY);
                         new CollisionEvent(this,item);
                 controller.getCollisionHandler().addCollisionEvent(collisionEvent);
+                System.out.println("queue size :" + controller.getCollisionHandler().getCollisionEventsQueue().size());
+                System.out.println("queue is empty :" + controller.getCollisionHandler().getCollisionEventsQueue().isEmpty());
 //                System.out.println(controller.getCollisionHandler().getCollisionEventsQueue().size());
                 result = true;
                 break;

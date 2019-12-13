@@ -2,6 +2,7 @@ package com.team7.yourturn.data.map;
 
 import com.team7.yourturn.data.base.Item;
 import com.team7.yourturn.module.game.data.NormalWall;
+import com.team7.yourturn.module.game.data.TankBase;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -55,6 +56,12 @@ public class CheckpointOne extends CheckpointMap{
         barriers.add(new NormalWall("normal.jpg",900,180,controller));
         barriers.add(new NormalWall("normal.jpg",900,120,controller));
         barriers.add(new NormalWall("normal.jpg",900,60,controller));
+        barriers.add(new TankBase("test.jpg",500,700,controller));
+        barriers.add(new NormalWall("normal.jpg",500,640,controller));
+        barriers.add(new NormalWall("normal.jpg",440,640,controller));
+        barriers.add(new NormalWall("normal.jpg",440,700,controller));
+        barriers.add(new NormalWall("normal.jpg",560,700,controller));
+        barriers.add(new NormalWall("normal.jpg",560,640,controller));
 
     }
 

@@ -31,16 +31,19 @@ public class EnemyGeneratePoint extends BaseView {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 while (true) {
+
+                    try {
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     if (enemyLeft != 0 && enemyExist != 3) {
                         controller.addEvent(GENERATE_AN_ENEMY);
                         enemyExist++;
                         enemyLeft--;
+                        System.out.println("enemyExist :" + enemyExist + "\nenemyLeft :" + enemyLeft);
                     }
                 }
             }
