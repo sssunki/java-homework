@@ -18,7 +18,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
     private GameController gameController;
 
     private int enemyId;
-    private int direction;
+    private int direction =10002;
     private int hp;
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint) {
@@ -27,7 +27,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
         this.hp = 10;
         this.parentGeneratePoint = parentGeneratePoint;
         this.enemyEventQueue = new LinkedBlockingQueue<>();
-        this.itemComponent = new ItemComponent("test.jpg",width,height);
+        this.itemComponent = new ItemComponent("enemy1.jpg",width,height);
     }
 
     public Enemy(int x, int y, EnemyGeneratePoint parentGeneratePoint,GameController gameController) {
@@ -77,7 +77,6 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
-//                addEvent(ITEM_ATTACK);
             }
         }
 
@@ -142,21 +141,25 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_UP:
                 y -= 30;
                 locationUpdate();
+                directUpdateU(this.direction);
                 direction = DIRECT_UP;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_DOWN:
                 y += 30;
                 locationUpdate();
+                directUpdateD(this.direction);
                 direction = DIRECT_DOWN;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_RIGHT :
                 x += 30;
                 locationUpdate();
+                directUpdateR(this.direction);
                 direction = DIRECT_RIGHT;
                 return EVENT_HANDLE_SUCCEED;
             case ITEM_MOVE_LEFT :
                 x -= 30;
                 locationUpdate();
+                directUpdateL(this.direction);
                 direction = DIRECT_LEFT;
                 return EVENT_HANDLE_SUCCEED;
         }
