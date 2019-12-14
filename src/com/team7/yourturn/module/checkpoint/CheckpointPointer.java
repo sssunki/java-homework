@@ -53,13 +53,13 @@ public class CheckpointPointer extends BaseViewModel {
 
         switch (pointerState){
             case 300 :
-                mapType ="check.jpg";
+                mapType ="map1.jpg";
                 break;
             case 445:
-                mapType = "bore.jpg";
+                mapType = "map2.jpg";
                 break;
             default:
-                mapType ="checkpoint.jpg";
+                mapType ="map3.jpg";
         }
         System.out.println(pointerState);
 

@@ -26,6 +26,7 @@ public class GameController extends BaseController {
 
     private Bundle bundle;
     private int numOfPlayer;
+    private int chooseOfCheck;
     private int checkpoint;
     public static int score = 100;
     private CheckpointMap checkpointMap;
@@ -49,6 +50,9 @@ public class GameController extends BaseController {
 
     public GameController(Bundle bundle) {
         super(bundle);
+        numOfPlayer = bundle.getInt("player");
+        chooseOfCheck = bundle.getInt("checkpoint");
+        System.out.println("aaaa"+numOfPlayer + chooseOfCheck);
     }
 
     public GameController(){
@@ -78,7 +82,22 @@ public class GameController extends BaseController {
     }
 
     private void initMap() {
-        checkpointMap = new CheckpointOne();
+//        private int POINT_TO_CHECKPOINT_ONE   = 2101;
+//        private int POINT_TO_CHECKPOINT_TWO   = 2102;
+//        private int POINT_TO_CHECKPOINT_THREE = 2103;
+
+        switch (chooseOfCheck){
+            case 2101:
+                checkpointMap = new CheckpointOne();
+                break;
+            case 2102:
+                checkpointMap = new CheckpointTwo();
+                break;
+                default:
+                    checkpointMap = new CheckpointThree();
+
+        }
+
         checkpointMap.setController(this);
         checkpointMap.mapInit();
         items = checkpointMap.getBarriers();
