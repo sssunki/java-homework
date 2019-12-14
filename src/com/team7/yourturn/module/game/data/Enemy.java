@@ -101,9 +101,9 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 case 4:
                     enemyEventQueue.offer(ITEM_MOVE_LEFT);
                     break;
-                case 5:
+//                case 5:
 //                    enemyEventQueue.offer(ITEM_ATTACK);
-                    break;
+//                    break;
                 default:
                     break;
             }
@@ -119,6 +119,12 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
             case ITEM_MOVE_UP:
             case ITEM_MOVE_LEFT :
             case ITEM_MOVE_RIGHT :
+                int attackCodeSeed = (int)(1+Math.random()*(3-1+1));
+                if(attackCodeSeed == 1){
+                    Bullet bullet = new Bullet(direction,x,y, gameController);
+                    bullet.draw();
+                    bullet.move();
+                }
                 for (int i = 0; i <= 5; i++) {
                     try {
                         Thread.sleep(200);
@@ -129,9 +135,7 @@ public class Enemy extends BaseViewModel implements Movable, Damageable {
                 }
                 return changeLocationAndDirection(eventCode);
             case ITEM_ATTACK  :
-                Bullet bullet = new Bullet(direction,x,y, gameController);
-                bullet.draw();
-                bullet.move();
+
             case DAMAGE:
                 onBeingAttacked();
                 return EVENT_HANDLE_SUCCEED;

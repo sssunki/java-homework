@@ -20,6 +20,7 @@ public class Player extends BaseViewModel implements Movable , Damageable {
 
     private int direction;
     private GameController controller;
+    private int hp;
 
     public Player(String filename, int x, int y, GameController controller) {
         this.x = x;
@@ -135,6 +136,10 @@ public class Player extends BaseViewModel implements Movable , Damageable {
     @Override
     public void onBeingAttacked() {
 
+        hp = hp-1;
+        if(hp == 0){
+            controller.addEvent(GAME_OVER);
+        }
     }
 
     @Override

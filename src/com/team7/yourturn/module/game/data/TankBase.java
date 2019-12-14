@@ -16,19 +16,16 @@ public class TankBase extends BaseView {
         this.x = x;
         this.y = y;
         itemComponent = new ItemComponent(filename, width, height);
+        this.gameController = gameController;
     }
 
     @Override
     public void onCollision() {
-
-    }
-
-    public void onBeingAttacked() {
         //game over
         Image image = new ImageIcon("src/image/explode1.jpg").getImage();
         itemComponent.setImage(image);
         itemComponent.repaint();
         gameController.addEvent(GAME_OVER);
-
     }
+
 }

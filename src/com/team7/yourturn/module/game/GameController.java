@@ -9,6 +9,8 @@ import com.team7.yourturn.data.map.CheckpointTwo;
 import com.team7.yourturn.module.base.BaseController;
 import com.team7.yourturn.module.base.BaseView;
 import com.team7.yourturn.module.base.GameWindow;
+import com.team7.yourturn.module.checkpoint.CheckpointController;
+import com.team7.yourturn.module.count.CountController;
 import com.team7.yourturn.module.game.collision.CollisionEvent;
 import com.team7.yourturn.module.game.data.*;
 import com.team7.yourturn.utils.Bundle;
@@ -158,6 +160,8 @@ public class GameController extends BaseController {
                 initEnemy();
                 returnCode = EVENT_HANDLE_SUCCEED;
                 break;
+            case GAME_OVER:
+                gotoNextPage();
         }
 
         return returnCode;
@@ -184,6 +188,9 @@ public class GameController extends BaseController {
 
     @Override
     protected void gotoNextPage() {
+        Bundle bundle = new Bundle();
+        bundle.addInt("score",score);
+        gameWindow.setController(new CountController(bundle));
 
     }
 

@@ -71,7 +71,7 @@ public class CheckpointThree extends CheckpointMap{
         barriers.add(new NormalWall("normal.jpg",900,540,controller));
         barriers.add(new BulletThroughWall("sea.jpg",840,540,controller));
 
-        barriers.add(new TankBase("test.jpg",500,700,controller));
+        barriers.add(new TankBase("flag.jpg",500,700,controller));
         barriers.add(new NormalWall("normal.jpg",500,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,700,controller));

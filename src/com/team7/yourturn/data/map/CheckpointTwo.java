@@ -39,7 +39,7 @@ public class CheckpointTwo extends CheckpointMap{
         barriers.add(new NormalWall("normal.jpg",780,300,controller));
         barriers.add(new NormalWall("normal.jpg",840,300,controller));
         barriers.add(new NormalWall("normal.jpg",900,300,controller));
-        barriers.add(new TankBase("test.jpg",500,700,controller));
+        barriers.add(new TankBase("flag.jpg",500,700,controller));
         barriers.add(new NormalWall("normal.jpg",500,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,700,controller));

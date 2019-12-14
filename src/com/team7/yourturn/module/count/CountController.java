@@ -13,6 +13,7 @@ public class CountController extends BaseController {
 
     private CountPointer countPointer;
     private int numOfChoose;
+    private int score;
 
     public CountController(){
         countPointer=new CountPointer();
@@ -21,7 +22,7 @@ public class CountController extends BaseController {
     public CountController(Bundle bundle){
         super(bundle);
         countPointer = new CountPointer();
-        numOfChoose=bundle.getInt("choose");
+        score=bundle.getInt("score");
     }
 
     @Override
@@ -33,11 +34,14 @@ public class CountController extends BaseController {
     protected void initView() {
         //countPointer.draw();
 
-        int score = 1;
+        //score = 1000;
 
         JLabel jLabel=new JLabel(String.valueOf(String.valueOf(score)));
         jLabel.setBackground(Color.RED);
-        jLabel.setBounds(300,50,200,100);
+        jLabel.setBounds(500,0,200,300);
+        //jLabel.setSize(200,300);
+        jLabel.setFont(new Font("宋体", Font.PLAIN, 40));
+        jLabel.setForeground(Color.WHITE);//可以直接设置文字颜色
         jLabel.setVisible(true);
         gameWindow.add(jLabel);
 

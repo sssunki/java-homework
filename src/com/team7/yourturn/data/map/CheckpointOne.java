@@ -56,7 +56,7 @@ public class CheckpointOne extends CheckpointMap{
         barriers.add(new NormalWall("normal.jpg",900,180,controller));
         barriers.add(new NormalWall("normal.jpg",900,120,controller));
         barriers.add(new NormalWall("normal.jpg",900,60,controller));
-        barriers.add(new TankBase("test.jpg",500,700,controller));
+        barriers.add(new TankBase("flag.jpg",500,700,controller));
         barriers.add(new NormalWall("normal.jpg",500,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,640,controller));
         barriers.add(new NormalWall("normal.jpg",440,700,controller));
