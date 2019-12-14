@@ -9,6 +9,8 @@ public abstract class BaseViewModel extends BaseView{
 
     protected void locationUpdate() {
         itemComponent.setLocation(x,y);
+
+
     }
 
     protected void directUpdateL(int direction) {

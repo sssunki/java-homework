@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.security.Key;
+
+
 
 public class HomeController extends BaseController {
 
@@ -29,21 +32,27 @@ public class HomeController extends BaseController {
     @Override
     protected void initView() {
         modePointer.draw();
+        //modePointer.HandleEvent(MOVE_UP);
 
         // 设置背景
-        JLabel lblBackground = new JLabel(); // 创建一个标签组件对
-        URL resource = this.getClass().getResource("test.jpg"); // 获取背景图片路径
-        ImageIcon icon = new ImageIcon(resource); // 创建背景图片对象
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
-        lblBackground.setBounds(0,0, 1000,800); // 设置组件的显示位置及大小
-        gameWindow.add(lblBackground); // 将组件添加到面板中
+        JLabel jlpic = new JLabel();
+        JPanel jPanel = new JPanel();
+        ImageIcon icon = new ImageIcon("src/image/"+"splash.jpg");
 
+        jlpic.setIcon(icon);
+        jlpic.setSize(1000,800);
+        jPanel.add(jlpic);
+        jPanel.setSize(1000,800);
 
-
+        gameWindow.add(jPanel);
+        gameWindow.pack();
+        gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameWindow.setVisible(true);
     }
 
     @Override
     protected int handleEvent(int eventCode) {
+
         return modePointer.HandleEvent(eventCode);
     }
 

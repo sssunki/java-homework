@@ -3,6 +3,7 @@ package com.team7.yourturn.module.count;
 import com.team7.yourturn.module.base.BaseViewModel;
 import com.team7.yourturn.module.base.ItemComponent;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 import static com.team7.yourturn.utils.EventCode.*;
@@ -21,6 +22,7 @@ public class CountPointer extends BaseViewModel {
     private int pointerState = POINT_TO_AGAIN;
 
 
+
     public CountPointer(){
         x = 200;
         y = 300;
@@ -28,9 +30,11 @@ public class CountPointer extends BaseViewModel {
         itemComponent.setLocation(x, y);
     }
 
-    @Override
-    public void onCollision() {
-
+    public CountPointer(ItemComponent itemComponent){
+        x = 400;
+        y = 100;
+        this.itemComponent = itemComponent;
+        itemComponent.setLocation(x, y);
     }
 
     public int HandleEvent(int eventCode) {
@@ -46,6 +50,9 @@ public class CountPointer extends BaseViewModel {
 
         }
     }
+
+
+
     private int changePointer(int eventCode){
         int moveDistance = 120;
 
@@ -76,6 +83,7 @@ public class CountPointer extends BaseViewModel {
                     y -= moveDistance;
                 }
                 locationUpdate();
+
                 return EVENT_HANDLE_SUCCEED;
 
             default:
