@@ -94,4 +94,9 @@ public class CountPointer extends BaseViewModel {
     public int getPointerState() {
         return pointerState;
     }
+
+    @Override
+    public void onCollision() {
+
+    }
 }
